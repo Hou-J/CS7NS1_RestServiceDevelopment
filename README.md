@@ -1,14 +1,16 @@
 rest task
-	Jiongxuhou 17304249 for CS7NS1 Scalable Computing
+	Jiongxu Hou 17304249 for CS7NS1 Scalable Computing
 
 dependencies
-	Radon: 
+	radon: 
 		used to calculate cyclomatic complexity
 		can be installed through	pip install radon
 	Flask:
 		used to implement the restfull api
 		can be installed through	pip install flask
-
+	requests:
+		used to get requests
+		can be installed through	pip install requests
 
 manager:
 	the ip and port is hardcode and set as default: http://127.0.0.1:5000
