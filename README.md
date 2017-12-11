@@ -47,3 +47,4 @@ worker:
 	no required input
 	need open exact number of workers as the manager required
 	
+will add a .sh file later and make the start worker.py work automatically.
