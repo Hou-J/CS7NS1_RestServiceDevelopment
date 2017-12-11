@@ -4,8 +4,7 @@ After I almost done my work and testing my code, I tried to delete the repositor
 one I want to calculate), I need to see what will happen if I start from a empty folder. So I delete the pulledRepo folder (the folder I 
 stored the pulled files).
 	
-Then I run my worker code again without making a new folder "pulledRepo", (which obivously I shouldn't), and the code in worker.py 
-"rm my .git" deleted my .git folder, so all my git commit and log are gone (used to have more than 15 commits I think), and then the git 
+Then I run my worker code again without making a new folder "pulledRepo", (which obivously I should check before I run), and the code in worker.py "rm my .git" deleted my .git folder, so all my git commit and log are gone (used to have more than 15 commits I think), and then the git 
 logs which I pulled from python/core-workflow are here in my logs.
 	
 I'm new to git and github, and I even find this issue last saturday (Dec 9), I tried to fix this in serverl ways, but failed. I even 
