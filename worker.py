@@ -6,12 +6,12 @@ if __name__ == "__main__":
     json_data = json.loads(r.text)
     repoUrl = json_data['repo']
     print(repoUrl)
-    bashCommand =  "cd pulledRepo &" \
-                   "rm -rf .git/ &" \
-                   "git init &" \
-                   "git remote add origin {} &" \
-                   "git branch --set-upstream-to=origin/<branch> master & " \
-                   "git pull".format(repoUrl)
+    bashCommand = "cd pulledRepo &" \
+                  "rm -rf .git/ &" \
+                  "git init &" \
+                  "git remote add origin {} &" \
+                  "git branch --set-upstream-to=origin/<branch> master & " \
+                  "git pull".format(repoUrl)
 
     process = subprocess.Popen(bashCommand, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     command_output = process.stdout.read().decode()

@@ -8,36 +8,9 @@ app = Flask(__name__)
 api = Api(app)
 
 
-class getRepo(Resource):
-    def __init__(self):
-        global m
-        self.manger = m
-        super(getRepo, self).__init__()
-        self.reqparser = reqparse.RequestParser()
-
-        self.reqparser.add_argument('pullStatus', type=int, location='json')
-        self.reqparser.add_argument('complexity', type=float, location='json')
-
-    def get(self):
-        args = self.reqparser.parse_args()
-        if args['pullStatus'] == False:
-            print("GOT 1")
-            return {'repo': "https://github.com/{}/{}".format(self.manger.owner, self.manger.repo)}
-        if args['pullStatus'] == True:
-            self.manger.workerNumNow += 1
-            if self.manger.workerNumNow == self.manger.numWorkers:
-                self.manger.startTime = time()
-            print("WORKER NUMBER: {}".format(self.manger.workerNumNow))
-
-    def post(self):
-        pass
-
-
 class cycCalculator(Resource):
     def __init__(self):
-        global m
         self.manger = m
-        super(cycCalculator, self).__init__()
         self.reqparser = reqparse.RequestParser()
 
         self.reqparser.add_argument('commit', type=str, location='json')  # Repeat for multiple variables
@@ -73,6 +46,29 @@ class cycCalculator(Resource):
                                                                                                averageComplexity))
             print("{} workers finished work in {} seconds\n\n".format(self.manger.numWorkers, endTime))
         return {'success': True}
+
+
+class getRepo(Resource):
+    def __init__(self):
+        self.manger = m
+        self.reqparser = reqparse.RequestParser()
+
+        self.reqparser.add_argument('pullStatus', type=int, location='json')
+        self.reqparser.add_argument('complexity', type=float, location='json')
+
+    def get(self):
+        args = self.reqparser.parse_args()
+        if args['pullStatus'] == False:
+            print("GOT 1")
+            return {'repo': "https://github.com/{}/{}".format(self.manger.owner, self.manger.repo)}
+        if args['pullStatus'] == True:
+            self.manger.workerNumNow += 1
+            if self.manger.workerNumNow == self.manger.numWorkers:
+                self.manger.startTime = time()
+            print("WORKER NUMBER: {}".format(self.manger.workerNumNow))
+
+    def post(self):
+        pass
 
 
 api.add_resource(cycCalculator, '/cyc', endpoint="cyc")
