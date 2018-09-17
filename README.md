@@ -1,70 +1,46 @@
-note: 
-
-After I almost done with my work and started testing my code, I tried to delete the repository I pulled from the python/core-workflow (the one I want to calculate), I need to see what will happen if I start from a empty folder. So I delete the pulledRepo folder (the folder I stored the pulled files).
-	
-Then I run my worker code again without making a new folder "pulledRepo", (which obivously I should check before I run), and the code in worker.py "rm .git/" deleted my .git folder, so all my git commit and log are gone (used to have more than 15 commits I think), and then the git logs which I pulled from python/core-workflow are here in my logs.
-	
-I'm new to git and github, and I didn't find this issue until last saturday (Dec 9), I tried to fix this in serverl ways, but failed. I even tried some file recovery applications, still, I cannot find the file that I accidently deleted. So I do not have my logs here in my repositorys.
-	
-I'm so sorry that this happened, this obivious taught me a lesson and I will be more careful with my logs, .git folder and codes, 
-but currently I really can not do anything to save the situation, and I do not have the time to redo my work from scrach, so all I can 
-do is add more comment to the code, to show that I really do know my code. I would appreciate if you can take this 
-into account when grading. Thank you.
-
-
-
-rest task
-
 	Jiongxu Hou 17304249 for CS7NS1 Scalable Computing
 
-dependencies
+#Rest Service Development Task
+The task is focussed on the efficient computation of code complexity for a given GitHub repository, utilising a set of nodes as appropriate to minimise execution time from submission to result return.
 
-	radon: 
-		used to calculate cyclomatic complexity
-		
-		can be installed through	pip install radon
-		
-	flask:
-		used to implement the restfull api
-		
-		can be installed through	pip install flask
-		
-	flask_restful:
-	
-		used to implement the restfull api
-		
-		can be installed through	pip install flask_restful
-		
-	requests:
-	
-		used to get requests
-		
-		can be installed through	pip install requests
+The manager is to distribue the tasks to mutiple workers one at a time, after the worker finished the given task, it will ask for a new task till all tasks is done.
 
-manager:
+The *plot.pdf* shows the results of the time needed in calculating different GitHub repositories as well as the relations of worker number and the time used in the calculation.
 
-	the ip and port is hardcode and set as default: http://127.0.0.1:5000
-	
-	start with:	python manger.py
-	
-	required input:
-	
-		number of workers
-		
-		the repository belonged user
-		
-		the repository name
-		
-		
-worker:
+##Dependencies
+Install all independence: *pip install -r requirements.txt* 
 
-	the ip and port is hardcode and set as default: http://127.0.0.1:5000
+or:
+
+###radon: 
+To calculate cyclomatic complexitycan, installed: *pip install radon*
 	
-	start with:	python worker.py
+###flask:
+To implement the restfull api, install: *pip install flask*
 	
-	no required input
+###flask_restful:
+To implement the restfull api, install: *pip install flask_restful*
 	
-	need open exact number of workers as the manager required
+###requests:
+To get requests, install: *pip install requests*
+
+##manager.py:
+The ip and port is hardcode and set as default: http://127.0.0.1:5000
+
+start with: *python manger.py [$numberOfWorkers, $repositoryUser, $repositoryName]*
+		
+		
+##worker.py:
+
+The ip and port is hardcode and set as default: http://127.0.0.1:5000
+	
+Start with: *python worker.py*
+	
+Need start exact number of workers ($numberOfWorkers) as the manager required
 	
 	
-will add a .sh file later and make the start worker.py work automatically.
+#Note: 
+
+After I almost done with my work and started testing my code, I tried to delete the repository I pulled from the python/core-workflow (the one I want to calculate) as I want to see what will happen if I start from a empty folder. So I delete the pulledRepo folder (the folder I stored the pulled files).
+	
+Then I run my worker code again without making a new folder "pulledRepo" and the code in *worker.py* "rm .git/" deleted my *.git* folder, so all my git commit and log are gone (used to have more than 15 commits I think), and then the git logs which I pulled from python/core-workflow are here in my logs.
