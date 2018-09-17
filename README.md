@@ -27,7 +27,7 @@ To get requests, install: *pip install requests*
 ## manager.py:
 The ip and port is hardcode and set as default: http://127.0.0.1:5000
 
-start with: *python manger.py [$numberOfWorkers, $repositoryUser, $repositoryName]*
+start with: *python manger.py [numberOfWorkers] [repositoryUser] [repositoryName]*
 		
 		
 ## worker.py:
@@ -36,7 +36,7 @@ The ip and port is hardcode and set as default: http://127.0.0.1:5000
 	
 Start with: *python worker.py*
 	
-Need start exact number of workers ($numberOfWorkers) as the manager required
+Need start exact number of workers ([numberOfWorkers]) as the manager required
 	
 	
 # Note: 
